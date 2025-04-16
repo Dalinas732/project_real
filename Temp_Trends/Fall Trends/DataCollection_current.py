@@ -11,6 +11,35 @@ class Temperature_Data:
             
         self.years = years # Declare as self to call in CLass
         self.dfs = dfs
+        self.first = True
+
+    def _check_zeros(self,data):
+        for i in range (data.size-1):
+            if data[i] == 0:
+                return True
+        return False
+    
+    def _fix_zeros(self,frame,year):
+        months = np.arange(12) + 1
+        for month in months: ### Goes through all months in a given year
+            self.first = False
+            lows = self.collect_month(month,year,"low")
+            self.first = False
+            avgs = self.collect_month(month,year,"average")
+            self.first = False
+            highs = self.collect_month(month,year,"high")
+            self.check_length_of_month(lows.size,month,year)
+            self.check_length_of_month(avgs.size,month,year)
+            self.check_length_of_month(highs.size,month,year)
+            if self._check_zeros(lows):
+                for i in range(lows.size):
+                    if lows[i] == 0:
+                        newlow = round(2*avgs[i] - highs[i],3)
+                        lows[i] = newlow
+                        assert lows[i] == newlow, f"The low was not changed for month = {month} and index = {i}."     
+            pd_lows = np.append(lows,[float(np.nan)]*(31-lows.size))
+            frame.iloc[:,(3*month-1)] = pd_lows.astype(float)
+
 
     def check_length_of_month(self,count,month,year): # This function will help spot missing or incomplete data
         correct = None
@@ -50,8 +79,12 @@ class Temperature_Data:
             index = 3*month - 1 # Redfined for the minimum column
         else:
             raise ValueError("Mode not selected correctly.")
-            
-        df = self.dfs[year]
+
+        
+        df = self.dfs[year].astype(float)
+        if self.first == True:
+            self._fix_zeros(df,year)
+        
         temps_array = np.array(df.iloc[:,index],dtype=float)
         temps_list = []
         day = 1
@@ -60,12 +93,9 @@ class Temperature_Data:
                 temps_list.append(temps)
             elif np.isnan(temps) == True and day <= 28:
                 print(f"Warning: Read NaN in month={month} year = {year}.") ### Does not raise error
-            elif np.isnan(temps) == True and day >= 29 and month != 2:
-                print(f"Warning: Read NaN in month={month} year = {year}.") ### Does not raise error
-            else:
-                raise ValueError(f"Value was not a float or a NaN. Month = {month} year = {year}.")
             day+=1
         temps = np.array(temps_list,dtype=float)
+        self.first = True
         return temps
         
     def collect_day(self,month,day,mode=None): # This function collects all highs for a given day between 1960-2024
@@ -87,7 +117,8 @@ class Temperature_Data:
         day_index= day - 1       # Bc rows start at 0 subtract 1
         
         for year in self.years:
-            df = self.dfs[year]
+            df = self.dfs[year].astype(float)
+            self._fix_zeros(df,year)
             temps = np.array(df.iloc[day_index,index])
             if np.isnan(temps) == False:  # Checks to make sure Data is clean
                 temps_list.append(temps)
