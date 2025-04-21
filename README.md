@@ -26,4 +26,4 @@ Jupyter Notebook
 
 Git
 
-Required Python packages: pandas, numpy, matplotlib, seaborn, scipy, scikit-learn FOLDER STRUCTURE: DATA: Contains the raw temperature data Scripts: Contains the bashscripts for webscrapping. Notebooks: Contains all my python code that will most likely do my data analysis Reports: Contains my findings in writings that humans can read. Most likely HW submissions to professor
+To run a script you .ipynb file you must place temp_script.py and clean_data.xlsx in the directory you wish to run. This helps not having different versions have the script floating everywhere.
