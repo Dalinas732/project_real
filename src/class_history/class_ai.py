@@ -117,6 +117,7 @@ class Temperature_Data:
         Returns:
         np.ndarray: Array of valid daily temperature values.
         """
+        check = False
         if isinstance(year, int):
             year = str(year)
         elif not isinstance(year, str):
@@ -128,12 +129,13 @@ class Temperature_Data:
             index = 3 * month - 2
         elif mode == "low" or mode == 2:
             index = 3 * month - 1
+            check = True
         else:
             raise ValueError("Mode must be 'high', 'average', or 'low' (or 0, 1, 2).")
 
         df = self.dfs[year].astype(float)
 
-        if self.tag is not True: # If tagged from _fix_zeroes will skip to avoid recursion
+        if self.tag is not True and check: # If tagged from _fix_zeroes will skip to avoid recursion
             self._fix_zeros(df, year)
 
         temps_array = np.array(df.iloc[:, index], dtype=float)
@@ -165,6 +167,7 @@ class Temperature_Data:
         Raises:
         ValueError: If a NaN is encountered in the data.
         """
+        check = False
         assert day <= 31, "Input for day cannot be above 31."
 
         if mode == "high" or mode == 0:
@@ -173,6 +176,7 @@ class Temperature_Data:
             index = 3 * month - 2
         elif mode == "low" or mode == 2:
             index = 3 * month - 1
+            check = True
         else:
             raise ValueError("Mode must be 'high', 'average', or 'low' (or 0, 1, 2).")
 
@@ -181,7 +185,8 @@ class Temperature_Data:
 
         for year in self.years:
             df = self.dfs[year].astype(float)
-            self._fix_zeros(df, year)
+            if check:
+                self._fix_zeros(df, year)
             temp = df.iloc[day_index, index]
 
             if not np.isnan(temp):
