@@ -8,6 +8,7 @@ Key Findings
 - Early spring and late fall are changing slower than midwinter
 
 - <img width="989" height="586" alt="image" src="https://github.com/user-attachments/assets/06482980-5acc-45b2-b729-75bb6b880c10" />
+
 <img width="987" height="586" alt="image" src="https://github.com/user-attachments/assets/735ee115-038f-4f4c-9c10-31cc60a20672" />
 
 Code Highlights
