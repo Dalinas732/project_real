@@ -56,6 +56,17 @@ A detailed PDF summary of methodology, results, and context is available here:
 - Build a **Streamlit dashboard** for interactive exploration
 
 ---
+## 🔍 Other Interesting Findings
+
+In the notebooks, I explored several side questions that emerged from local anecdotes and seasonal patterns, including:
+
+- Whether Lansing used to have snow cover from December through April
+- How the number of freezing days per year has shifted over time
+- How daily variance and winter volatility have changed in recent decades
+
+These are covered in the exploratory notebooks (`Temp_Trends/`, `Number of Freezing Days/`) and visualized alongside the core results. While not the primary focus of this summary, they helped shape my understanding of how climate change is affecting seasonal rhythms—not just averages.
+
+
 
 ## 🛠 Requirements
 
