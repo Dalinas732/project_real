@@ -16,7 +16,7 @@ This project analyzes over 60 years of daily weather data to quantify how warmin
 ## 📊 Visuals
 
 ### December Temperature Trends (1960–2024)
-![December Temperature Trends](Temp_Trends/dec.png)
+![December Temperature Trends](Temp_Trends/dec.PNG)
 
 ### July Temperature Trends (1960–2024)
 ![July Temperature Trends](plots/july_trend.png)
