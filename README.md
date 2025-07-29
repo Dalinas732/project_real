@@ -1,29 +1,19 @@
-Analyzing Temperature Variability in Lansing, Michigan
+Lansing, Michigan Is Losing Its Winters — A 60-Year Climate Data Analysis
+This project analyzes over 60 years of daily weather data to quantify how warming trends are reshaping Michigan’s winters, especially through lost sub-freezing days.
 
-Project Title and Brief Description Analyzing Temperature Variability in Lansing, Michigan: Standard Deviation and Climate Change Trends
+Key Findings
+- Lansing winters are warming **~0.86°F per decade** on average
+- **Sub-freezing days** have declined by ~24 days since 1960
+- **Winter lows are warming twice as fast** as summer highs
+- Early spring and late fall are changing slower than midwinter
 
-This project aims to analyze the standard deviation of daily temperatures in Lansing, Michigan, across multiple time frames to investigate potential changes due to climate change. Using historical temperature data, we will quantify trends in variability and compute additional statistical measures such as mean, percentiles, and temperature extremes. The study will provide insights into how temperature fluctuations have evolved over decades.
+- <img width="989" height="586" alt="image" src="https://github.com/user-attachments/assets/06482980-5acc-45b2-b729-75bb6b880c10" />
+<img width="987" height="586" alt="image" src="https://github.com/user-attachments/assets/735ee115-038f-4f4c-9c10-31cc60a20672" />
 
-Project Objectives:
+Code Highlights
+- Custom `Temperature_Data` class for organizing and cleaning 60+ years of messy climate records
+- Auto-fixes bad entries (e.g., 0°F lows in July) using estimation logic
+- Modular design with month/day extraction, validation checks, and reproducible analysis
 
-Collect and preprocess historical temperature data for Lansing, MI.
-
-Calculate the standard deviation of temperatures for each calendar day of the year.
-
-Compare standard deviation trends across different time periods (e.g., 1950-1979, 1980-2009, 2010-present) to assess climate change impacts.
-
-Compute additional statistical measures such as mean, percentiles, and variance.
-
-Visualize temperature trends and variability using data visualization techniques.
-
-Summarize findings in a final report with clear interpretations and implications.
-
-Setup Instructions Prerequisites Ensure you have the following installed:
-
-Python (>=3.8)
-
-Jupyter Notebook
-
-Git
-
-To run a script you .ipynb file you must place temp_script.py and clean_data.xlsx in the directory you wish to run. This helps not having different versions have the script floating everywhere.
+Planned improvements:
+- Time series forecasting
