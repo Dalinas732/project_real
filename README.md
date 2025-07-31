@@ -21,6 +21,10 @@ This project analyzes over 60 years of daily weather data to quantify how warmin
 ### July Temperature Trends (1960–2024)
 ![July Temperature Trends](Temp_Trends/july.PNG)
 
+### Past decade vs Historical 30 Year Average
+![Dec Temperature Variance](Temp_Trends/var.PNG)
+
+
 ---
 
 ## 🧠 Code Highlights
